@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Invoic Maker</string>
+    <string name="app_name">Invoice Maker</string>
+    <string name="generate_invoice">Generate Invoice</string>
+    <string name="total_harga">Total Harga</string>
+    <string name="banyak_cicilan">Banyak Cicilan</string>
+    <string name="dp">DP</string>
+    <string name="ongkir">Ongkir</string>
+    <string name="diskon">Diskon</string>
 </resources>

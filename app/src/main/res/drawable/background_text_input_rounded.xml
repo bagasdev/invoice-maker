@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/grey_background_input_text" />
+            <stroke android:width="1dp" android:color="@color/colorAccent" />
+            <corners android:radius="4dp" />
+            <padding android:bottom="@dimen/padding_background_text_input"
+                android:left="@dimen/padding_background_text_input"
+                android:right="@dimen/padding_background_text_input"
+                android:top="@dimen/padding_background_text_input" />
+        </shape>
+    </item>
+
+    <item android:state_enabled="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/grey_background_input_text" />
+            <stroke android:width="1dp" android:color="@color/grey_stroke_input_text" />
+            <corners android:radius="4dp" />
+            <padding android:bottom="@dimen/padding_background_text_input"
+                android:left="@dimen/padding_background_text_input"
+                android:right="@dimen/padding_background_text_input"
+                android:top="@dimen/padding_background_text_input" />
+        </shape>
+    </item>
+</selector>
