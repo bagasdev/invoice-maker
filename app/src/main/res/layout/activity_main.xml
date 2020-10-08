@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="16dp"
-                    android:text="@string/total_harga"
+                    android:text="@string/harga_barang"
                     android:textColor="@color/primary_text"
                     android:textSize="20sp" />
 
@@ -56,12 +56,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="16dp"
-                    android:text="@string/diskon"
+                    android:text="@string/ongkir"
                     android:textColor="@color/primary_text"
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/textDiskon"
+                    android:id="@+id/textOngkir"
                     android:layout_width="match_parent"
                     android:background="@drawable/background_text_input_rounded"
                     android:layout_height="wrap_content"
@@ -116,6 +116,32 @@
                     android:background="@drawable/background_text_input_rounded"
                     android:layout_height="wrap_content"
                     android:inputType="number"
+                    android:maxLines="1"
+                    android:textAlignment="textEnd" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12sp">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/diskon"
+                    android:textColor="@color/primary_text"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/textDiskon"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/background_text_input_rounded"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"
                     android:maxLines="1"
                     android:textAlignment="textEnd" />
 

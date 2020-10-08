@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_table_row_invoice_body"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:id="@+id/textDesc"
+        android:textAlignment="viewStart"
+        android:textColor="@color/primary_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textValue"
+        android:background="@drawable/background_table_row_invoice_body"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/primary_text"/>
+
+</TableRow>

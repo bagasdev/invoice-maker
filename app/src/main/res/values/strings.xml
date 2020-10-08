@@ -6,4 +6,8 @@
     <string name="dp">DP</string>
     <string name="ongkir">Ongkir</string>
     <string name="diskon">Diskon</string>
+    <string name="harga_barang">Harga Barang</string>
+    <string name="total_pembayaran">Total Pembayaran</string>
+    <string name="nilai_pembayaran">Nilai Pembayaran</string>
+    <string name="tagihan">Tagihan</string>
 </resources>
