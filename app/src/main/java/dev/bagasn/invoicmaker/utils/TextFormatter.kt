@@ -1,28 +1,27 @@
 package dev.bagasn.invoicmaker.utils
 
+import androidx.annotation.NonNull
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.util.*
+
 class TextFormatter {
 
     companion object {
 
-        fun intToCurrencyText(value: Int): String {
-            if (value <= 0)
-                return "0"
-            return textToCurrency(value.toString())
+        fun intToCurrencyText(@NonNull value: Int): String {
+            return convertToCurrency(value.toDouble())
         }
 
         fun textToCurrency(charText: String): String {
-            val characters = charText.toCharArray()
-            var textBuilder = ""
+            if (charText.isEmpty())
+                return "0"
+            return convertToCurrency(charText.toDouble())
+        }
 
-            var counter = characters.size - 1
-            for (i in 1..characters.size) {
-                textBuilder = characters[counter--] + textBuilder
-                if (i % 3 == 0 && i < characters.size) {
-                    textBuilder = ",$textBuilder"
-                }
-            }
-
-            return textBuilder
+        fun convertToCurrency(value: Double): String {
+            val formatter = DecimalFormat("#,##0", DecimalFormatSymbols(Locale.US))
+            return formatter.format(value)
         }
 
     }

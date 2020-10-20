@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/grey_background_input_text"
+    android:layout_width="@dimen/width_dialog_fragment"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp">
+
+    <LinearLayout
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tambah_item"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/primary_text"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/divider" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_title"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/nama"
+            android:textColor="@color/primary_text"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/textNamaBarang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="NONE"
+            android:background="@drawable/background_text_input_rounded"
+            android:inputType="text|textCapWords"
+            android:textSize="16sp"
+            tools:ignore="LabelFor" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_1"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="12dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/harga"
+            android:textColor="@color/primary_text"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/textHarga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="NONE"
+            android:textAlignment="viewEnd"
+            android:background="@drawable/background_text_input_rounded"
+            android:inputType="number"
+            android:textSize="16sp"
+            tools:ignore="LabelFor" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_2"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="12dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/kuantitas"
+            android:textColor="@color/primary_text"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/textQty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewEnd"
+            android:autofillHints="NONE"
+            android:background="@drawable/background_text_input_rounded"
+            android:inputType="number"
+            android:textSize="16sp"
+            tools:ignore="LabelFor" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_3"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="12dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/diskon"
+            android:textColor="@color/primary_text"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/textDiscount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_percent_16"
+            android:textAlignment="viewEnd"
+            android:maxLength="2"
+            android:autofillHints="NONE"
+            android:drawablePadding="6dp"
+            android:background="@drawable/background_text_input_rounded"
+            android:inputType="number"
+            android:textSize="16sp"
+            tools:ignore="LabelFor" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_4"
+        android:layout_marginHorizontal="12dp"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonCancel"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:textColor="@color/red" />
+
+        <Button
+            android:id="@+id/buttonTambah"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tambah" />
+
+    </LinearLayout>
+
+</RelativeLayout>

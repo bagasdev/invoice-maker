@@ -13,7 +13,8 @@ class CurrencyTextWatcher(private val mText: EditText) : TextWatcher {
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         mText.removeTextChangedListener(this)
 
-        var charText = s.toString()
+        val charText = s.toString()
+            .replace(".", "")
             .replace(",", "")
 
         val resultText = TextFormatter.textToCurrency(charText)

@@ -10,4 +10,20 @@
     <string name="total_pembayaran">Total Pembayaran</string>
     <string name="nilai_pembayaran">Nilai Pembayaran</string>
     <string name="tagihan">Tagihan</string>
+    <string name="nama_barang">Nama Barang</string>
+    <string name="kuantitas">Kuantitas</string>
+    <string name="hapus">Hapus</string>
+    <string name="edit">Edit</string>
+    <string name="cancel">Cancel</string>
+    <string name="tambah">Tambah</string>
+    <string name="tambah_item">Tambah Item</string>
+    <string name="nama">Nama</string>
+    <string name="harga">Harga</string>
+    <string name="buat_invoice">Buat Invoice</string>
+    <string name="total">Total</string>
+    <string name="invoice">Invoice</string>
+    <string name="list_barang">List Barang</string>
+    <string name="reset">Reset</string>
+    <string name="share">Share</string>
+    <string name="title_activity_input_item">Input Item</string>
 </resources>

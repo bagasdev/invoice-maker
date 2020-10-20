@@ -6,158 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="1dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGenerate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12sp">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/harga_barang"
-                    android:textColor="@color/primary_text"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/textTotalHarga"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/background_text_input_rounded"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:textAlignment="textEnd" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12sp">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/ongkir"
-                    android:textColor="@color/primary_text"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/textOngkir"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/background_text_input_rounded"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:textAlignment="textEnd" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12sp">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/banyak_cicilan"
-                    android:textColor="@color/primary_text"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/textBanyakCicilan"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/background_text_input_rounded"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:textAlignment="textEnd" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12sp">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/dp"
-                    android:textColor="@color/primary_text"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/textDP"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/background_text_input_rounded"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:textAlignment="textEnd" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12sp">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/diskon"
-                    android:textColor="@color/primary_text"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/textDiskon"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/background_text_input_rounded"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:imeOptions="actionDone"
-                    android:maxLines="1"
-                    android:textAlignment="textEnd" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-    <Button
-        android:id="@+id/buttonGenerate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/generate_invoice"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_recycler_barang" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_add_white"
+        android:visibility="gone"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fabStartCount"
+        app:layout_constraintEnd_toEndOf="@+id/fabMoreAction"
+        app:layout_constraintStart_toStartOf="@+id/fabMoreAction"
+        app:srcCompat="@drawable/ic_baseline_add_white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabStartCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_play_arrow"
+        android:visibility="gone"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fabMoreAction"
+        app:layout_constraintEnd_toEndOf="@+id/fabMoreAction"
+        app:layout_constraintStart_toStartOf="@+id/fabMoreAction"
+        app:srcCompat="@drawable/ic_baseline_play_arrow" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabMoreAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_more_vert_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_more_vert_white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

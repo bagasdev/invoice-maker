@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="padding_background_text_input">8dp</dimen>
+    <dimen name="width_dialog_fragment">340dp</dimen>
+    <dimen name="height_dialog_tambah_item">280dp</dimen>
+    <dimen name="height_padding_list_with_floating_button">86dp</dimen>
 </resources>

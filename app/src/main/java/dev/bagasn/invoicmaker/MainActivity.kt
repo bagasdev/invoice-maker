@@ -3,80 +3,124 @@ package dev.bagasn.invoicmaker
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
+import android.view.Menu
 import android.view.MenuItem
-import android.widget.EditText
+import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
-import dev.bagasn.invoicmaker.text.CurrencyTextWatcher
+import androidx.recyclerview.widget.LinearLayoutManager
+import dev.bagasn.invoicmaker.adapter.RecyclerItemBarangAdapter
+import dev.bagasn.invoicmaker.dialog.AddItemBarangDialog
+import dev.bagasn.invoicmaker.model.ItemModel
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AddItemBarangDialog.ItemAddListener {
+
+    private var mRecyclerAdapter: RecyclerItemBarangAdapter? = null
+    private var isFabOpen = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        textTotalHarga.addTextChangedListener(CurrencyTextWatcher(textTotalHarga))
-        textOngkir.addTextChangedListener(CurrencyTextWatcher(textOngkir))
-        textBanyakCicilan.addTextChangedListener(CurrencyTextWatcher(textBanyakCicilan))
-        textDP.addTextChangedListener(CurrencyTextWatcher(textDP))
-        textDiskon.addTextChangedListener(CurrencyTextWatcher(textDiskon))
+        mRecyclerAdapter = RecyclerItemBarangAdapter(applicationContext)
 
-        buttonGenerate.setOnClickListener {
-            val harga = convertViewToInteger(textTotalHarga)
-            val ongkir = convertViewToInteger(textOngkir)
-            val cicilan = convertViewToInteger(textBanyakCicilan)
-            val dp = convertViewToInteger(textDP)
-            val diskon = convertViewToInteger(textDiskon)
+        recyclerView.layoutManager = LinearLayoutManager(
+            applicationContext,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
+        recyclerView.adapter = mRecyclerAdapter
 
-            if (harga <= 0) {
-                showToasMessage("Total harga harus diisi.")
-                return@setOnClickListener
-            }
-            if (cicilan <= 0) {
-                showToasMessage("Cicilan harus diisi.")
-                return@setOnClickListener
-            }
-            if (dp <= 0) {
-                showToasMessage("DP harus diisi.")
-                return@setOnClickListener
-            }
+        fabAddItem.hide()
+        fabStartCount.hide()
 
-            val intent = Intent(applicationContext, ResultActivity::class.java)
-            intent.putExtra("harga", harga)
-            intent.putExtra("ongkir", ongkir)
-            intent.putExtra("cicilan", cicilan)
-            intent.putExtra("dp", dp)
-            intent.putExtra("diskon", diskon)
+        fabAddItem.setOnClickListener {
+            setVisibilityMoreAction()
 
-            startActivity(intent)
+            AddItemBarangDialog(this)
+                .show(supportFragmentManager, "dialog_add_item")
         }
+        fabStartCount.setOnClickListener {
+            setVisibilityMoreAction()
+
+            actionStartCount()
+        }
+        fabMoreAction.setOnClickListener { setVisibilityMoreAction() }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             onBackPressed()
             return true
+        } else if (item.itemId == R.id.actionReset) {
+            mRecyclerAdapter?.clearItems()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    fun convertViewToInteger(view: EditText): Int {
-        val text = view.text.toString()
-            .replace(",", "")
-
-        if (text.isEmpty())
-            return 0
-
-        val value = text.toInt()
-        if (value < 0) return 0
-        return value
+    override fun onAdded(data: ItemModel) {
+        mRecyclerAdapter?.addItem(data)
     }
 
-    fun showToasMessage(message: String) {
-        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT)
-            .show()
+    private fun actionStartCount() {
+        val itemList = mRecyclerAdapter?.getItemList()
+        if (itemList.isNullOrEmpty()) {
+            Toast.makeText(
+                applicationContext,
+                "Belum ada item yang ditambahkan.",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        val intent = Intent(applicationContext, CalculateItemsActivity::class.java)
+        intent.putExtra("item-list", itemList)
+        startActivity(intent)
     }
+
+    private fun setVisibilityMoreAction() {
+        if (isFabOpen) {
+            fabMoreAction.startAnimation(
+                AnimationUtils
+                    .loadAnimation(applicationContext, R.anim.rotate_reverse_90_degree)
+            )
+            fabStartCount.startAnimation(
+                AnimationUtils
+                    .loadAnimation(applicationContext, R.anim.fade_reverse_top)
+            )
+            fabAddItem.startAnimation(
+                AnimationUtils
+                    .loadAnimation(applicationContext, R.anim.fade_reverse_top)
+            )
+
+            fabAddItem.visibility = View.GONE
+            fabStartCount.visibility = View.GONE
+        } else {
+            fabMoreAction.startAnimation(
+                AnimationUtils
+                    .loadAnimation(applicationContext, R.anim.rotate_90_degree)
+            )
+            fabStartCount.startAnimation(
+                AnimationUtils
+                    .loadAnimation(applicationContext, R.anim.fade_to_top)
+            )
+            fabAddItem.startAnimation(
+                AnimationUtils
+                    .loadAnimation(applicationContext, R.anim.fade_to_top)
+            )
+
+            fabAddItem.visibility = View.VISIBLE
+            fabStartCount.visibility = View.VISIBLE
+        }
+        isFabOpen = !isFabOpen
+    }
+
 }
